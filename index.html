@@ -36,54 +36,87 @@
     .img-box.product { height: 160px; }
     .img-box.article { height: 180px; }
 
-    /* Мелкие улучшения визуала */
+    /* Визуал */
     .brand-badge { letter-spacing: 0.3px; }
     .card { border: 0; border-radius: 16px; }
     .card-shadow { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
 
     /* Липкий фильтр на десктопе */
     @media (min-width: 992px) {
-      .sticky-filter { position: sticky; top: 88px; }
+      .sticky-filter { position: sticky; top: 92px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- HEADER -->
+  <!-- HEADER + NAV (для практики 8: ссылки на Contacts/FAQ) -->
   <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
     <div class="container py-2">
-      <a class="navbar-brand fw-bold brand-badge" href="#">PlantShop</a>
+      <a class="navbar-brand fw-bold brand-badge" href="index.html">PlantShop</a>
 
-      <form class="d-flex flex-grow-1 mx-lg-4 my-2 my-lg-0" role="search">
-        <div class="input-group">
-          <span class="input-group-text bg-light border-0">
-            <i class="bi bi-search"></i>
-          </span>
-          <input class="form-control bg-light border-0" type="search" placeholder="Поиск растений, грунта, удобрений..." />
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#topNav"
+        aria-controls="topNav"
+        aria-expanded="false"
+        aria-label="Открыть меню"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse gap-3" id="topNav">
+        <!-- Текстовая навигация по страницам -->
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Главная</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contacts.html">Контакты</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="faq.html">FAQ</a>
+          </li>
+        </ul>
+
+        <!-- Поиск -->
+        <form class="d-flex flex-grow-1 flex-lg-grow-0 mx-lg-2 my-2 my-lg-0" role="search">
+          <div class="input-group">
+            <span class="input-group-text bg-light border-0">
+              <i class="bi bi-search"></i>
+            </span>
+            <input
+              class="form-control bg-light border-0"
+              type="search"
+              placeholder="Поиск растений, грунта, удобрений..."
+            />
+          </div>
+        </form>
+
+        <!-- Иконки (как ты и говорил: Избранное/Корзина/Профиль/Каталог) -->
+        <div class="d-flex align-items-center gap-2">
+          <a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" href="#" aria-label="Избранное">
+            <i class="bi bi-heart"></i><span class="d-none d-md-inline">Избранное</span>
+          </a>
+          <a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" href="#" aria-label="Корзина">
+            <i class="bi bi-cart"></i><span class="d-none d-md-inline">Корзина</span>
+          </a>
+          <a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" href="#" aria-label="Профиль">
+            <i class="bi bi-person"></i><span class="d-none d-md-inline">Профиль</span>
+          </a>
+
+          <a class="btn btn-success d-inline-flex align-items-center gap-2" href="#catalog" aria-label="Каталог">
+            <i class="bi bi-grid"></i><span class="d-none d-md-inline">Каталог</span>
+          </a>
         </div>
-      </form>
-
-      <div class="d-flex align-items-center gap-2">
-        <a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" href="#" aria-label="Избранное">
-          <i class="bi bi-heart"></i><span class="d-none d-md-inline">Избранное</span>
-        </a>
-        <a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" href="#" aria-label="Корзина">
-          <i class="bi bi-cart"></i><span class="d-none d-md-inline">Корзина</span>
-        </a>
-        <a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" href="#" aria-label="Профиль">
-          <i class="bi bi-person"></i><span class="d-none d-md-inline">Профиль</span>
-        </a>
-
-        <button class="btn btn-success d-inline-flex align-items-center gap-2" type="button">
-          <i class="bi bi-grid"></i><span class="d-none d-md-inline">Каталог</span>
-        </button>
       </div>
     </div>
   </nav>
 
   <main class="container my-4">
 
-    <!-- HERO (кратко, чтобы не мешать wireframe) -->
+    <!-- HERO -->
     <section class="mb-4">
       <div class="p-4 p-md-5 bg-white rounded-4 card-shadow">
         <div class="row align-items-center g-4">
@@ -98,11 +131,14 @@
             </div>
           </div>
           <div class="col-lg-5">
-            <!-- сюда можешь поставить любое фото -->
             <div class="img-box article">
-              <img class="img-cover" src="https://avatars.mds.yandex.net/i?id=6ab06f12d86ece72ccfef0e1645380d2e83bfbb1-5869047-images-thumbs&n=13" alt="Домашние растения" />
+              <!-- ТВОЯ ССЫЛКА СОХРАНЕНА -->
+              <img
+                class="img-cover"
+                src="https://avatars.mds.yandex.net/i?id=6ab06f12d86ece72ccfef0e1645380d2e83bfbb1-5869047-images-thumbs&n=13"
+                alt="Домашние растения"
+              />
             </div>
-            <!-- Если нет картинки — просто положи любую в assets/hero.jpg -->
           </div>
         </div>
       </div>
@@ -119,7 +155,6 @@
       </div>
 
       <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-6">
-        <!-- Карточка товара (повторяй сколько нужно) -->
         <div class="col">
           <div class="card card-shadow h-100">
             <div class="p-3">
@@ -220,7 +255,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -231,7 +265,8 @@
           <h2 class="h4 fw-bold mb-1">Уход и советы</h2>
           <p class="text-secondary mb-0">Короткие статьи, чтобы растения жили дольше</p>
         </div>
-        <a class="link-success text-decoration-none fw-semibold" href="#">Все статьи →</a>
+        <!-- Для практики 8 логично вести в FAQ -->
+        <a class="link-success text-decoration-none fw-semibold" href="faq.html">Все статьи →</a>
       </div>
 
       <div class="row g-3 row-cols-1 row-cols-md-2 row-cols-lg-4">
@@ -247,7 +282,7 @@
               </p>
             </div>
             <div class="p-3 pt-0">
-              <a class="btn btn-outline-success w-100" href="#">Читать</a>
+              <a class="btn btn-outline-success w-100" href="faq.html">Читать</a>
             </div>
           </article>
         </div>
@@ -264,7 +299,7 @@
               </p>
             </div>
             <div class="p-3 pt-0">
-              <a class="btn btn-outline-success w-100" href="#">Читать</a>
+              <a class="btn btn-outline-success w-100" href="faq.html">Читать</a>
             </div>
           </article>
         </div>
@@ -281,7 +316,7 @@
               </p>
             </div>
             <div class="p-3 pt-0">
-              <a class="btn btn-outline-success w-100" href="#">Читать</a>
+              <a class="btn btn-outline-success w-100" href="faq.html">Читать</a>
             </div>
           </article>
         </div>
@@ -298,7 +333,7 @@
               </p>
             </div>
             <div class="p-3 pt-0">
-              <a class="btn btn-outline-success w-100" href="#">Читать</a>
+              <a class="btn btn-outline-success w-100" href="faq.html">Читать</a>
             </div>
           </article>
         </div>
@@ -384,12 +419,11 @@
         <!-- Products grid -->
         <div class="col-lg-9">
           <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-xl-4">
-            <!-- Карточка товара (повторяй/клонируй) -->
             <div class="col">
               <div class="card card-shadow h-100">
                 <div class="p-3">
                   <div class="img-box product mb-3">
-                    <img class="img-cover" src="https://static.vecteezy.com/system/resources/previews/042/592/625/non_2x/ai-generated-calathea-orbifolia-isolated-on-transparent-background-free-png.png" alt="Растение" />
+                    <img class="img-cover" src="https://static.vecteezy.com/system/resources/previews/042/592/625/non_2x/ai-generated-calathea-orbifolia-isolated-on-transparent-background-free-png.png" alt="Калатея" />
                   </div>
                   <div class="fw-semibold">Калатея</div>
                   <div class="text-secondary small">Полутень • Средний уход</div>
@@ -405,7 +439,7 @@
               <div class="card card-shadow h-100">
                 <div class="p-3">
                   <div class="img-box product mb-3">
-                    <img class="img-cover" src="https://png.pngtree.com/png-vector/20231129/ourmid/pngtree-everlasting-blooming-green-chlorophytum-potted-plant-foliage-isolated-png-image_10759587.png" alt="Растение" />
+                    <img class="img-cover" src="https://png.pngtree.com/png-vector/20231129/ourmid/pngtree-everlasting-blooming-green-chlorophytum-potted-plant-foliage-isolated-png-image_10759587.png" alt="Хлорофитум" />
                   </div>
                   <div class="fw-semibold">Хлорофитум</div>
                   <div class="text-secondary small">Тень • Неприхотливый</div>
@@ -421,7 +455,7 @@
               <div class="card card-shadow h-100">
                 <div class="p-3">
                   <div class="img-box product mb-3">
-                    <img class="img-cover" src="https://avatars.mds.yandex.net/i?id=1ca3b5b8f88c0827f0f29de1b138a5ce73428fd4-5234693-images-thumbs&n=13" alt="Растение" />
+                    <img class="img-cover" src="https://avatars.mds.yandex.net/i?id=1ca3b5b8f88c0827f0f29de1b138a5ce73428fd4-5234693-images-thumbs&n=13" alt="Алоэ" />
                   </div>
                   <div class="fw-semibold">Алоэ</div>
                   <div class="text-secondary small">Яркий свет • Неприхотливый</div>
@@ -437,7 +471,7 @@
               <div class="card card-shadow h-100">
                 <div class="p-3">
                   <div class="img-box product mb-3">
-                    <img class="img-cover" src="https://avatars.mds.yandex.net/i?id=5bf9875df070d05b6f2c59736a52e4ff78884b37-10139706-images-thumbs&n=13" alt="Растение" />
+                    <img class="img-cover" src="https://avatars.mds.yandex.net/i?id=5bf9875df070d05b6f2c59736a52e4ff78884b37-10139706-images-thumbs&n=13" alt="Филодендрон" />
                   </div>
                   <div class="fw-semibold">Филодендрон</div>
                   <div class="text-secondary small">Полутень • Средний уход</div>
@@ -464,7 +498,7 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (единый для всех страниц) -->
     <footer class="py-4 border-top">
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
         <div class="text-secondary small">© 2026 PlantShop — интернет-магазин домашних растений</div>
