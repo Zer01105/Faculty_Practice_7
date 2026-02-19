@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PlantShop — Магазин домашних растений</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+
+  <style>
+    body { background: #f6f7f8; }
+
+    /* Унифицированные изображения: вставляй любые фото — размер блока не меняется */
+    .img-cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .img-box {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #e9ecef;
+    }
+    .img-box.product { height: 160px; }
+    .img-box.article { height: 180px; }
+
+    /* Мелкие улучшения визуала */
+    .brand-badge { letter-spacing: 0.3px; }
+    .card { border: 0; border-radius: 16px; }
+    .card-shadow { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+
+    /* Липкий фильтр на десктопе */
+    @media (min-width: 992px) {
+      .sticky-filter { position: sticky; top: 88px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+    <div class="container py-2">
+      <a class="navbar-brand fw-bold brand-badge" href="#">PlantShop</a>
+
+      <form class="d-flex flex-grow-1 mx-lg-4 my-2 my-lg-0" role="search">
+        <div class="input-group">
+          <span class="input-group-text bg-light border-0">
+            <i class="bi bi-search"></i>
+          </span>
+          <input class="form-control bg-light border-0" type="search" placeholder="Поиск растений, грунта, удобрений..." />
+        </div>
+      </form>
+
+      <div class="d-flex align-items-center gap-2">
+        <a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" href="#" aria-label="Избранное">
+          <i class="bi bi-heart"></i><span class="d-none d-md-inline">Избранное</span>
+        </a>
+        <a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" href="#" aria-label="Корзина">
+          <i class="bi bi-cart"></i><span class="d-none d-md-inline">Корзина</span>
+        </a>
+        <a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" href="#" aria-label="Профиль">
+          <i class="bi bi-person"></i><span class="d-none d-md-inline">Профиль</span>
+        </a>
+
+        <button class="btn btn-success d-inline-flex align-items-center gap-2" type="button">
+          <i class="bi bi-grid"></i><span class="d-none d-md-inline">Каталог</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+
+    <!-- HERO (кратко, чтобы не мешать wireframe) -->
+    <section class="mb-4">
+      <div class="p-4 p-md-5 bg-white rounded-4 card-shadow">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <h1 class="fw-bold mb-2">Домашние растения, которые легко полюбить</h1>
+            <p class="text-secondary mb-3">
+              Подберём зелёного “соседа” под ваш свет, график и опыт. Доставка бережно и быстро.
+            </p>
+            <div class="d-flex gap-2 flex-wrap">
+              <a class="btn btn-success btn-lg" href="#catalog">Перейти в каталог</a>
+              <a class="btn btn-outline-secondary btn-lg" href="#care">Уход и советы</a>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <!-- сюда можешь поставить любое фото -->
+            <div class="img-box article">
+              <img class="img-cover" src="https://avatars.mds.yandex.net/i?id=6ab06f12d86ece72ccfef0e1645380d2e83bfbb1-5869047-images-thumbs&n=13" alt="Домашние растения" />
+            </div>
+            <!-- Если нет картинки — просто положи любую в assets/hero.jpg -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POPULAR PRODUCTS -->
+    <section class="mb-4">
+      <div class="d-flex align-items-end justify-content-between mb-3">
+        <div>
+          <h2 class="h4 fw-bold mb-1">Популярные товары</h2>
+          <p class="text-secondary mb-0">То, что чаще всего берут прямо сейчас</p>
+        </div>
+        <a class="link-success text-decoration-none fw-semibold" href="#catalog">Смотреть все →</a>
+      </div>
+
+      <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-lg-6">
+        <!-- Карточка товара (повторяй сколько нужно) -->
+        <div class="col">
+          <div class="card card-shadow h-100">
+            <div class="p-3">
+              <div class="img-box product mb-3">
+                <img class="img-cover" src="https://d775ypbe1855i.cloudfront.net/large/9/9_1505839864_2541.png" alt="Фикус" />
+              </div>
+              <div class="d-flex justify-content-between align-items-start gap-2">
+                <div>
+                  <div class="fw-semibold">Фикус Бенджамина</div>
+                  <div class="text-secondary small">Неприхотливый</div>
+                </div>
+                <span class="badge text-bg-light">TOP</span>
+              </div>
+              <div class="mt-2 fw-bold">1 490 ₽</div>
+            </div>
+            <div class="p-3 pt-0">
+              <button class="btn btn-success w-100">В корзину</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card card-shadow h-100">
+            <div class="p-3">
+              <div class="img-box product mb-3">
+                <img class="img-cover" src="https://png.pngtree.com/png-vector/20240125/ourmid/pngtree-monstera-deliciosa-monstera-giant-leaf-on-white-pot-air-purification-planthouse-png-image_11494521.png" alt="Монстера" />
+              </div>
+              <div class="fw-semibold">Монстера</div>
+              <div class="text-secondary small">Для яркого света</div>
+              <div class="mt-2 fw-bold">2 990 ₽</div>
+            </div>
+            <div class="p-3 pt-0">
+              <button class="btn btn-success w-100">В корзину</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card card-shadow h-100">
+            <div class="p-3">
+              <div class="img-box product mb-3">
+                <img class="img-cover" src="https://static.vecteezy.com/system/resources/previews/038/147/892/non_2x/ai-generated-snake-plant-sansevieria-trifasciata-on-transparent-background-image-png.png" alt="Сансевиерия" />
+              </div>
+              <div class="fw-semibold">Сансевиерия</div>
+              <div class="text-secondary small">Переносит тень</div>
+              <div class="mt-2 fw-bold">990 ₽</div>
+            </div>
+            <div class="p-3 pt-0">
+              <button class="btn btn-success w-100">В корзину</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card card-shadow h-100">
+            <div class="p-3">
+              <div class="img-box product mb-3">
+                <img class="img-cover" src="https://png.pngtree.com/png-vector/20240122/ourmid/pngtree-3d-zamioculcas-zamiifolia-in-pot-png-image_11444304.png" alt="Замиокулькас" />
+              </div>
+              <div class="fw-semibold">Замиокулькас</div>
+              <div class="text-secondary small">Очень выносливый</div>
+              <div class="mt-2 fw-bold">1 790 ₽</div>
+            </div>
+            <div class="p-3 pt-0">
+              <button class="btn btn-success w-100">В корзину</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card card-shadow h-100">
+            <div class="p-3">
+              <div class="img-box product mb-3">
+                <img class="img-cover" src="https://static.vecteezy.com/system/resources/previews/038/594/583/non_2x/ai-generated-spathiphyllum-wallisii-flower-on-a-transparent-canvas-free-png.png" alt="Спатифиллум" />
+              </div>
+              <div class="fw-semibold">Спатифиллум</div>
+              <div class="text-secondary small">Любит влагу</div>
+              <div class="mt-2 fw-bold">1 390 ₽</div>
+            </div>
+            <div class="p-3 pt-0">
+              <button class="btn btn-success w-100">В корзину</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card card-shadow h-100">
+            <div class="p-3">
+              <div class="img-box product mb-3">
+                <img class="img-cover" src="https://png.pngtree.com/png-vector/20240913/ourmid/pngtree-pachira-png-image_12909343.png" alt="Пахира" />
+              </div>
+              <div class="fw-semibold">Пахира</div>
+              <div class="text-secondary small">Для интерьера</div>
+              <div class="mt-2 fw-bold">2 490 ₽</div>
+            </div>
+            <div class="p-3 pt-0">
+              <button class="btn btn-success w-100">В корзину</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CARE ARTICLES -->
+    <section id="care" class="mb-4">
+      <div class="d-flex align-items-end justify-content-between mb-3">
+        <div>
+          <h2 class="h4 fw-bold mb-1">Уход и советы</h2>
+          <p class="text-secondary mb-0">Короткие статьи, чтобы растения жили дольше</p>
+        </div>
+        <a class="link-success text-decoration-none fw-semibold" href="#">Все статьи →</a>
+      </div>
+
+      <div class="row g-3 row-cols-1 row-cols-md-2 row-cols-lg-4">
+        <div class="col">
+          <article class="card card-shadow h-100">
+            <div class="p-3">
+              <div class="img-box article mb-3">
+                <img class="img-cover" src="https://avatars.mds.yandex.net/i?id=a99f23239e5f8ba5a90cfcd7690ef816_l-4911504-images-thumbs&n=13" alt="Полив" />
+              </div>
+              <h3 class="h6 fw-bold mb-1">Как понять, что пора поливать?</h3>
+              <p class="text-secondary small mb-0">
+                Простые признаки по листьям и грунту + лайфхак с деревянной палочкой.
+              </p>
+            </div>
+            <div class="p-3 pt-0">
+              <a class="btn btn-outline-success w-100" href="#">Читать</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col">
+          <article class="card card-shadow h-100">
+            <div class="p-3">
+              <div class="img-box article mb-3">
+                <img class="img-cover" src="https://png.pngtree.com/png-vector/20240427/ourmid/pngtree-there-is-a-modern-potted-plant-and-white-table-lamp-on-png-image_12327406.png" alt="Свет" />
+              </div>
+              <h3 class="h6 fw-bold mb-1">Свет: куда поставить растение</h3>
+              <p class="text-secondary small mb-0">
+                Разбираемся в северных/южных окнах и как избежать ожогов.
+              </p>
+            </div>
+            <div class="p-3 pt-0">
+              <a class="btn btn-outline-success w-100" href="#">Читать</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col">
+          <article class="card card-shadow h-100">
+            <div class="p-3">
+              <div class="img-box article mb-3">
+                <img class="img-cover" src="https://avatars.mds.yandex.net/i?id=f61bcec21f592049d37ebe37e9ae5e7ddb09acff-8334793-images-thumbs&n=13" alt="Пересадка" />
+              </div>
+              <h3 class="h6 fw-bold mb-1">Пересадка без стресса</h3>
+              <p class="text-secondary small mb-0">
+                Когда пересаживать, какой грунт выбрать и что делать после.
+              </p>
+            </div>
+            <div class="p-3 pt-0">
+              <a class="btn btn-outline-success w-100" href="#">Читать</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col">
+          <article class="card card-shadow h-100">
+            <div class="p-3">
+              <div class="img-box article mb-3">
+                <img class="img-cover" src="https://flowersadvice.ru/wp-content/uploads/2016/11/kamelia-chervec.png" alt="Вредители" />
+              </div>
+              <h3 class="h6 fw-bold mb-1">Вредители: что делать сразу</h3>
+              <p class="text-secondary small mb-0">
+                Первые шаги, изоляция, обработка и профилактика.
+              </p>
+            </div>
+            <div class="p-3 pt-0">
+              <a class="btn btn-outline-success w-100" href="#">Читать</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOG -->
+    <section id="catalog" class="mb-5">
+      <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-2 mb-3">
+        <div>
+          <h2 class="h4 fw-bold mb-1">Каталог растений</h2>
+          <p class="text-secondary mb-0">Подберите растение под условия дома</p>
+        </div>
+
+        <div class="d-flex gap-2">
+          <select class="form-select" aria-label="Сортировка">
+            <option selected>Сортировка: популярные</option>
+            <option>Сначала дешевле</option>
+            <option>Сначала дороже</option>
+            <option>По рейтингу</option>
+            <option>По новизне</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <!-- Filters -->
+        <aside class="col-lg-3">
+          <div class="bg-white rounded-4 p-3 card-shadow sticky-filter">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h3 class="h6 fw-bold mb-0">Фильтры</h3>
+              <button class="btn btn-sm btn-outline-secondary" type="button">Сбросить</button>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Цена</label>
+              <div class="row g-2">
+                <div class="col">
+                  <input class="form-control" type="number" placeholder="от" />
+                </div>
+                <div class="col">
+                  <input class="form-control" type="number" placeholder="до" />
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="fw-semibold mb-2">Освещение</div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="light1" />
+                <label class="form-check-label" for="light1">Яркий свет</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="light2" />
+                <label class="form-check-label" for="light2">Полутень</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="light3" />
+                <label class="form-check-label" for="light3">Тень</label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="fw-semibold mb-2">Уровень ухода</div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="care1" />
+                <label class="form-check-label" for="care1">Неприхотливые</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="care2" />
+                <label class="form-check-label" for="care2">Средний уход</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="care3" />
+                <label class="form-check-label" for="care3">Требовательные</label>
+              </div>
+            </div>
+
+            <button class="btn btn-success w-100" type="button">Применить</button>
+          </div>
+        </aside>
+
+        <!-- Products grid -->
+        <div class="col-lg-9">
+          <div class="row g-3 row-cols-2 row-cols-md-3 row-cols-xl-4">
+            <!-- Карточка товара (повторяй/клонируй) -->
+            <div class="col">
+              <div class="card card-shadow h-100">
+                <div class="p-3">
+                  <div class="img-box product mb-3">
+                    <img class="img-cover" src="https://static.vecteezy.com/system/resources/previews/042/592/625/non_2x/ai-generated-calathea-orbifolia-isolated-on-transparent-background-free-png.png" alt="Растение" />
+                  </div>
+                  <div class="fw-semibold">Калатея</div>
+                  <div class="text-secondary small">Полутень • Средний уход</div>
+                  <div class="mt-2 fw-bold">1 890 ₽</div>
+                </div>
+                <div class="p-3 pt-0">
+                  <button class="btn btn-success w-100">В корзину</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card card-shadow h-100">
+                <div class="p-3">
+                  <div class="img-box product mb-3">
+                    <img class="img-cover" src="https://png.pngtree.com/png-vector/20231129/ourmid/pngtree-everlasting-blooming-green-chlorophytum-potted-plant-foliage-isolated-png-image_10759587.png" alt="Растение" />
+                  </div>
+                  <div class="fw-semibold">Хлорофитум</div>
+                  <div class="text-secondary small">Тень • Неприхотливый</div>
+                  <div class="mt-2 fw-bold">690 ₽</div>
+                </div>
+                <div class="p-3 pt-0">
+                  <button class="btn btn-success w-100">В корзину</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card card-shadow h-100">
+                <div class="p-3">
+                  <div class="img-box product mb-3">
+                    <img class="img-cover" src="https://avatars.mds.yandex.net/i?id=1ca3b5b8f88c0827f0f29de1b138a5ce73428fd4-5234693-images-thumbs&n=13" alt="Растение" />
+                  </div>
+                  <div class="fw-semibold">Алоэ</div>
+                  <div class="text-secondary small">Яркий свет • Неприхотливый</div>
+                  <div class="mt-2 fw-bold">790 ₽</div>
+                </div>
+                <div class="p-3 pt-0">
+                  <button class="btn btn-success w-100">В корзину</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="card card-shadow h-100">
+                <div class="p-3">
+                  <div class="img-box product mb-3">
+                    <img class="img-cover" src="https://avatars.mds.yandex.net/i?id=5bf9875df070d05b6f2c59736a52e4ff78884b37-10139706-images-thumbs&n=13" alt="Растение" />
+                  </div>
+                  <div class="fw-semibold">Филодендрон</div>
+                  <div class="text-secondary small">Полутень • Средний уход</div>
+                  <div class="mt-2 fw-bold">2 190 ₽</div>
+                </div>
+                <div class="p-3 pt-0">
+                  <button class="btn btn-success w-100">В корзину</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <nav class="mt-4" aria-label="Навигация по страницам">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled"><a class="page-link" href="#">Назад</a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">Вперёд</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-4 border-top">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+        <div class="text-secondary small">© 2026 PlantShop — интернет-магазин домашних растений</div>
+        <div class="d-flex gap-3">
+          <a class="text-secondary" href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a class="text-secondary" href="#" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+          <a class="text-secondary" href="#" aria-label="VK"><i class="bi bi-chat-dots"></i></a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
